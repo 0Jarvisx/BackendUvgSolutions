@@ -12,7 +12,7 @@ require("dotenv").config();
 
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: '*',
   allowedHeaders: ['Content-Type']
 }))
 app.use(express.json({ limit: '100mb' }));
@@ -29,7 +29,7 @@ sequelize
   .sync()
   .then(() => {
     console.log("Database connected");
-    app.listen(3000, () => {
+    app.listen(3000,'0.0.0.0', () => {
       console.log("Server running on port 3000");
     });
   })
